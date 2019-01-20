@@ -17,6 +17,8 @@
 //= require_tree .
 //= require moment
 //= require fullcalendar
+//= require popper
+//= require bootstrap-sprockets
 
 function eventCalendar() {
     return $("#calendar").fullCalendar({});

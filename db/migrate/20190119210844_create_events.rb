@@ -7,6 +7,7 @@ class CreateEvents < ActiveRecord::Migration[5.2]
       t.string :color
       t.datetime :created_at
       t.datetime :updated_at
+      t.integer :priv
 
       t.timestamps
     end
