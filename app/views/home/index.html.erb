@@ -1,6 +1,10 @@
 <div class="text-center">
     <h1>Welcome to Jeff's Calendar App!</h1>
     <h2>Check out our upcoming events!</h2>
+    <div>
+    <span class="border border-primary rounded"> <%= link_to 'Sign In', new_user_session_path %> </span>
+    <span class="border border-primary rounded"><%= link_to 'Sign Up', new_user_registration_path %> </span>
+    </div>
 </div>
 <div class="container">
     <div class="calendar"></div>
