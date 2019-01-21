@@ -9,12 +9,14 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body >
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= render 'shared/nav' %>
     <%= yield %>
-    <% unless user_signed_in? %>
+    <% if user_signed_in? %>
+      <%= render partial: 'events/new'%>
+    <% else %>
       <%= render partial: 'devise/registrations/new' %>
       <%= render partial: 'devise/sessions/new' %>
     <% end %>
