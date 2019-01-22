@@ -1,0 +1,24 @@
+<div>
+  <h2>Todos</h2>
+  <% @event.todos.each do |todo| %>
+    <% if todo.completed? %>
+      <div class="todo_item">
+        <strike><%= todo.body %></strike>
+      </div>
+    <% else %>
+        <%= todo.body %>
+        <%= link_to "Mark as Complete", complete_event_todo_path(@event, todo.id), method: :patch %>
+    <% end %>
+
+  <% end %>
+
+  <h2>Add an item that must be done</h2>
+  <%= form_with(model: [ @event, @event.todos.build ], local: true) do |form| %>
+    <p>
+      <%= form.text_area :body %>
+    </p>
+    <p>
+      <%= form.submit %>
+    </p>
+  <% end %>
+</div>

@@ -1,39 +1,29 @@
 <p id="notice"><%= notice %></p>
-
+<div class="container">
 <p>
-  <strong>Title:</strong>
+  <h1>
   <%= @event.title %>
+  </h1>
 </p>
 
 <p>
-  <strong>Start:</strong>
+  <strong>Starts at:</strong>
   <%= @event.start %>
 </p>
 
 <p>
-  <strong>End:</strong>
+  <strong>Goes until:</strong>
   <%= @event.end %>
-</p>
-
-<p>
-  <strong>Color:</strong>
-  <%= @event.color %>
-</p>
-
-<p>
-  <strong>Created at:</strong>
-  <%= @event.created_at %>
-</p>
-
-<p>
-  <strong>Updated at:</strong>
-  <%= @event.updated_at %>
 </p>
 
 <p>
   <strong>This is a private event:</strong>
   <%= @event.private_event %>
 </p>
+<div>
+  <%= render partial: 'todos/index' %>
+</div>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<%= link_to 'Back', root_path %>
+</div>
