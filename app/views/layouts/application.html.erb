@@ -10,9 +10,9 @@
   </head>
 
   <body >
+    <%= render 'shared/nav' %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= render 'shared/nav' %>
     <%= yield %>
     <% if user_signed_in? %>
       <%= render partial: 'events/new'%>

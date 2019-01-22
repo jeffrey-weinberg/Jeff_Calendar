@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_20_194533) do
+ActiveRecord::Schema.define(version: 2019_01_22_040551) do
 
   create_table "events", force: :cascade do |t|
     t.string "title"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2019_01_20_194533) do
     t.string "color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "private_event"
   end
 
   create_table "task_items", force: :cascade do |t|

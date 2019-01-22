@@ -9,7 +9,36 @@
       </div>
       <div class="modal-body">
             <%# <%= render 'events/form', event: @event %>
-            ...
+            <%= form_with scope: :event, url: events_path, local: true do |form| %>
+              <p>
+                <%= form.label :title %><br>
+                <%= form.text_field :title %>
+              </p>
+            
+              <p>
+                <%= form.label :start %>
+                <%= form.datetime_select :start %>
+              </p>
+
+              <p>
+                <%= form.label :end %>
+                <%= form.datetime_select :end %>
+              </p>
+
+              <p>
+                <%= form.label :color %>
+                <%= form.text_field :color %>
+              </p>
+
+              <p>
+                <%= form.label :private %>
+                <%= form.check_box :private_event %>
+              </p>
+
+              <p>
+                <%= form.submit %>
+              </p>
+            <% end %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
