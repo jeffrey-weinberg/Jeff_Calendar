@@ -1,33 +1,41 @@
 <p id="notice"><%= notice %></p>
 <div class="container">
-<p>
-  <h1>
-  <%= @event.title %>
-  </h1>
-</p>
+  <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark text-center">
+    <p>
+      <h1>
+      <%= @event.title %>
+      </h1>
+    </p>
 
-<p>
-  <strong>Starts at:</strong>
-  <%= @event.start %>
-</p>
+    <p>
+      <strong>Starts at:</strong>
+      <%= @event.start %>
+    </p>
 
-<p>
-  <strong>Goes until:</strong>
-  <%= @event.end %>
-</p>
+    <p>
+      <strong>Goes until:</strong>
+      <%= @event.end %>
+    </p>
 
-<p>
-  <strong>This is a private event:</strong>
-  <%= @event.private_event %>
-</p>
-<div>
-  <%= render partial: 'todos/index' %>
-</div>
+    <p>
+      <strong>This is a private event:</strong>
+      <%= @event.private_event %>
+    </p>
 
-<div>
-  <%= render partial: 'comments/index' %>
-</div>
+    <%= link_to 'Edit', edit_event_path(@event) %> |
+    <%= link_to 'Back', root_path %>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <%= render partial: 'todos/index' %>
+      </div>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', root_path %>
+      <div class="col">
+        <%= render partial: 'comments/index' %>
+      </div>
+    </div>
+  </div>
+
+
 </div>

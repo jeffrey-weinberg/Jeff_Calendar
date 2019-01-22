@@ -1,15 +1,21 @@
-<h2>Comments</h2>
-<% @event.comments.each do |comment| %>
-  <p>
-    <strong>Author:</strong>
-    <%= comment.author %>
-  </p>
- 
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
-  </p>
-<% end %>
+<div class="card">
+  <div class="card-body">
+    <h2>Comments</h2>
+    <% @event.comments.each do |comment| %>
+      <p>
+        <%= comment.body %>
+      </p>
+    
+      <p>
+       - <%= comment.author %>
+      </p>
+
+      <%= link_to "Delete", [comment.event, comment], 
+          method: :delete, 
+          data: { confirm: "Are you sure?" } %>
+    <% end %>
+  </div>
+</div>
 
 <h2>Add a comment:</h2>
 <%= form_with(model: [ @event, @event.comments.build ], local: true) do |form| %>

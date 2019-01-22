@@ -12,7 +12,7 @@
 
   <% end %>
 
-  <h2>Add an item that must be done</h2>
+  <h4>Add an item that must be done</h4>
   <%= form_with(model: [ @event, @event.todos.build ], local: true) do |form| %>
     <p>
       <%= form.text_area :body %>
