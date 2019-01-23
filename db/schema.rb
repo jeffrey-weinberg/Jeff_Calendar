@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_23_220102) do
+ActiveRecord::Schema.define(version: 2019_01_23_233249) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -52,14 +52,37 @@ ActiveRecord::Schema.define(version: 2019_01_23_220102) do
     t.boolean "private_event"
   end
 
+  create_table "task_items", force: :cascade do |t|
+    t.string "content"
+    t.integer "task_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_task_items_on_task_id"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "todos", force: :cascade do |t|
     t.text "body"
     t.integer "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "completed_at"
-    t.integer "priority"
+    t.string "priority"
     t.index ["event_id"], name: "index_todos_on_event_id"
+  end
+
+  create_table "uploads", force: :cascade do |t|
+    t.string "attachment"
+    t.integer "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_uploads_on_event_id"
   end
 
   create_table "users", force: :cascade do |t|

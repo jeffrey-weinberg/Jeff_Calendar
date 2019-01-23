@@ -6,17 +6,17 @@
     <% if todo.completed? %>
       <div class="todo_item">
       <li>
-        <strike><%= todo.priority %> <%= todo.body %></strike>
+        <strike><%= todo.body %></strike>
       </li>
       </div>
     <% else %>
       <li>
         <% if !todo.priority %>
           <%= todo.body %>
-          <%= link_to "Mark as Complete", complete_event_todo_path(@event, todo.id), method: :patch %>
+          <%= link_to "Complete", complete_event_todo_path(@event, todo.id), method: :patch %>
         <% else %>
-          <%= todo.body %> Priority: <%= todo.priority %>
-          <%= link_to "Mark as Complete", complete_event_todo_path(@event, todo.id), method: :patch %>
+          <%= todo.body %> --> Priority: <%= todo.priority %>
+          <%= link_to "Complete", complete_event_todo_path(@event, todo.id), method: :patch %>
         <% end %>
       </li>
     <% end %>
@@ -27,7 +27,7 @@
       <%= form.text_area :body, class: "form-control form-control-lg", placeholder: "Add to-do items here"%>
     </p>
     <p>
-      Priority: <%= form.number_field :priority, in: 1..10 %>
+      Priority: <%= form.select :priority, ['High', 'Med', 'Low'] %>
     <p>
       <button class="btn btn-info" type="submit">Add todo</button>
     </p>
