@@ -1,24 +1,36 @@
-<div>
-  <h2>Todos</h2>
+<div class="card border-dark mb-3">
+  <h2 class="card-header bg-info text-center">Todos</h2>
+  <div class="card-body">
   <% @event.todos.each do |todo| %>
+    
     <% if todo.completed? %>
       <div class="todo_item">
-        <strike><%= todo.body %></strike>
+      <li>
+        <strike><%= todo.priority %> <%= todo.body %></strike>
+      </li>
       </div>
     <% else %>
-        <%= todo.body %>
-        <%= link_to "Mark as Complete", complete_event_todo_path(@event, todo.id), method: :patch %>
+      <li>
+        <% if !todo.priority %>
+          <%= todo.body %>
+          <%= link_to "Mark as Complete", complete_event_todo_path(@event, todo.id), method: :patch %>
+        <% else %>
+          <%= todo.body %> Priority: <%= todo.priority %>
+          <%= link_to "Mark as Complete", complete_event_todo_path(@event, todo.id), method: :patch %>
+        <% end %>
+      </li>
     <% end %>
-
   <% end %>
-
-  <h4>Add an item that must be done</h4>
+  <br/>
   <%= form_with(model: [ @event, @event.todos.build ], local: true) do |form| %>
     <p>
-      <%= form.text_area :body %>
+      <%= form.text_area :body, class: "form-control form-control-lg", placeholder: "Add to-do items here"%>
     </p>
     <p>
-      <%= form.submit %>
+      Priority: <%= form.number_field :priority, in: 1..10 %>
+    <p>
+      <button class="btn btn-info" type="submit">Add todo</button>
     </p>
   <% end %>
+  </div>
 </div>

@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  resources :tasks do
-    resources :task_items
-  end
+  get 'calendar/show'
+  resource :calendar, only: [:show], controller: :calendar
   devise_for :users
   resources :events do
     resources :todos do

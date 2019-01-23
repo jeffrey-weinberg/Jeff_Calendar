@@ -1,33 +1,38 @@
-<div class="card">
+<div class="card border-dark mb-3">
+<h2 class="card-header bg-info text-center">Comments</h2>
   <div class="card-body">
-    <h2>Comments</h2>
-    <% @event.comments.each do |comment| %>
-      <p>
-        <%= comment.body %>
-      </p>
     
-      <p>
-       - <%= comment.author %>
-      </p>
-
+    <% @event.comments.each do |comment| %>
+    <div class="row">
+      <div class="col-sm">
+        <p>
+          <%= comment.body %>
+        </p>
+      
+        <p>
+        - <%= comment.author %>
+        </p>
+      </div>
+      <div class="col-sm">
       <%= link_to "Delete", [comment.event, comment], 
           method: :delete, 
           data: { confirm: "Are you sure?" } %>
+        </div>
+        </div>
     <% end %>
-  </div>
-</div>
+ 
 
-<h2>Add a comment:</h2>
+<h4>Add a comment:</h4>
 <%= form_with(model: [ @event, @event.comments.build ], local: true) do |form| %>
   <p>
-    <%= form.label :author %><br>
-    <%= form.text_field :author %>
+    <%= form.text_field :author, class: "form-control", placeholder: "Name" %>
   </p>
   <p>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %>
+    <%= form.text_area :body, class: "form-control form-control-lg", placeholder: "Add a comment" %>
   </p>
   <p>
-    <%= form.submit %>
+    <button class="btn btn-info" type="submit">Submit</button>
   </p>
-<% end %>
+<% end %> 
+</div>
+</div>

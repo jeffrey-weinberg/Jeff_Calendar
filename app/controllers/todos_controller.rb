@@ -13,7 +13,8 @@ class TodosController < ApplicationController
 
     def complete
         @todo.update_attribute(:completed_at, Time.now)
-        redirect_to event_path(@event), notice: "Todo item completed"
+        redirect_to event_path(@event)
+        # notice: "Todo item completed"
     end
      
       private
@@ -26,6 +27,6 @@ class TodosController < ApplicationController
         end
 
         def todo_params
-          params.require(:todo).permit(:body)
+          params.require(:todo).permit(:body, :priority)
         end
 end

@@ -22,8 +22,8 @@
       <%= @event.private_event %>
     </p>
 
-    <%= link_to 'Edit', edit_event_path(@event) %> |
-    <%= link_to 'Back', root_path %>
+    <%= link_to 'Edit', edit_event_path(@event), class: 'btn btn-info' %> 
+    <%= link_to 'Delete', event_path(@event), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-info' %>
   </div>
   <div class="container">
     <div class="row">
@@ -33,6 +33,10 @@
 
       <div class="col">
         <%= render partial: 'comments/index' %>
+      </div>
+
+      <div class="col">
+        <%= render partial: 'uploads/index' %>
       </div>
     </div>
   </div>

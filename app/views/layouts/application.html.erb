@@ -11,14 +11,13 @@
 
   <body >
     <%= render 'shared/nav' %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
-    <% if user_signed_in? %>
-      <%= render partial: 'events/new'%>
-    <% else %>
-      <%= render partial: 'devise/registrations/new' %>
-      <%= render partial: 'devise/sessions/new' %>
-    <% end %>
+     
+      <%= yield %>
+      <% if user_signed_in? %>
+        <%= render partial: 'events/new'%>
+      <% else %>
+        <%= render partial: 'devise/registrations/new' %>
+        <%= render partial: 'devise/sessions/new' %>
+      <% end %>
   </body>
 </html>
